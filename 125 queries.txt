@@ -1,0 +1,14 @@
+1.
+select * from salespeople;
+
+2.
+select cname,rating from customers where rating=100;
+
+3.	
+select * from customers where city is null;
+
+4.
+select max(amt) , odate , s.snum from orders o join salespeople s on o.snum = s.snum group by s.snum , odate order by s.snum , odate;
+
+5.
+select * from orders order by cnum desc;
