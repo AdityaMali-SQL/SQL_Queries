@@ -12,3 +12,16 @@ select max(amt) , odate , s.snum from orders o join salespeople s on o.snum = s.
 
 5.
 select * from orders order by cnum desc;
+
+6. select distinct * from salespeople as s join orders as o on s.snum=o.snum;
+
+7. 
+select c.cnum,c.cname,s.snum,s.sname from customers as c join salespeople as s on c.snum = s.snum;
+
+8.
+select s.sname , s.snum , count(c.cnum) as total_Customers from customers as c join salespeople as s on c.snum=s.snum group by s.sname, s.snum having count(*) > 1;
+
+9.
+select s.snum , s.sname , count(o.onum) as Total_Orders from orders as o join salespeople as s on o.snum = s.snum group by s.sname,s.snum order by count(*) desc;
+
+10. select * from customers;
