@@ -25,3 +25,18 @@ select s.sname , s.snum , count(c.cnum) as total_Customers from customers as c j
 select s.snum , s.sname , count(o.onum) as Total_Orders from orders as o join salespeople as s on o.snum = s.snum group by s.sname,s.snum order by count(*) desc;
 
 10. select * from customers;
+
+11.
+select s.sname , c.cname , s.city from salespeople as s join customers as c on s.snum=c.snum where s.city=c.city;
+
+12. 
+select snum , max(amt) from orders group by snum;
+
+13. 
+select cnum , cname , city from customers where rating >= 200 AND city='San Jose';
+
+14.
+select sname , comm from salespeople where city = 'London';
+
+15.
+select * from orders as o join salespeople as s on o.snum=s.snum where s.sname='Motika';
