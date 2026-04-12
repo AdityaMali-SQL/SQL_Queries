@@ -40,3 +40,19 @@ select sname , comm from salespeople where city = 'London';
 
 15.
 select * from orders as o join salespeople as s on o.snum=s.snum where s.sname='Motika';
+
+16.
+select c.cnum, c.cname , o.odate from customers AS c JOIN orders as o ON c.cnum = o.cnum where o.odate = '1996-10-03';
+
+17. 
+select sum(amt) , odate from orders group by odate having sum(amt) >= (Max(amt) + 2000);
+
+18. 
+select * from orders where amt > ANY ( select amt from orders where odate='1996-10-06');
+
+19.
+select * from salespeople as s where exists ( select 1 from customers as c where rating=300 AND s.snum=c.snum);
+
+20. 
+select c1.cname , c2.cname from customers as c1 join customers as c2 on c1.rating=c2.rating and c1.cnum < c2.cnum;
+
