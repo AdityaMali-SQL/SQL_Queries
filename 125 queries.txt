@@ -56,3 +56,17 @@ select * from salespeople as s where exists ( select 1 from customers as c where
 20. 
 select c1.cname , c2.cname from customers as c1 join customers as c2 on c1.rating=c2.rating and c1.cnum < c2.cnum;
 
+21.
+select c.cname , c.snum from customers as c join salespeople as s on s.snum=c.snum where s.sname = 'serres' and c.cnum = (1000+s.snum) ;
+
+22.
+select snum , sname , concat( comm*100 , '%')  as CommisionPercentage from salespeople ;
+
+23.
+select s.sname , s.snum , o.odate , max(o.amt) from orders as o join salespeople as s on o.snum=s.snum group by s.sname , s.snum , o.odate having max(o.amt)>=3000;
+
+24.
+select s.snum , s.sname , max(o.amt) from salespeople as s join orders as o on s.snum=o.snum where o.odate='1996-10-03' group by s.snum , s.sname order by max(amt) desc;
+
+25.
+select cnum , cname , city  from customers where city in ( select c.city from customers as c join salespeople as s on c.snum=s.snum where s.sname = 'serres');
