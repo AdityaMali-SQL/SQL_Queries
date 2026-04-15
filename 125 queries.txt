@@ -88,3 +88,17 @@ select s.snum , s.sname from salespeople as s join customers as c on s.snum = c.
 30.
 select sname , city from salespeople as s where exists ( select 1 from customers as c where s.snum = c.snum and s.city = c.city)
 
+31.
+select * from salespeople where sname like 'P__l%';
+
+32.
+select *  from orders where cnum = ( select cnum from customers where cname='Cisneros');
+
+33.
+select s.snum , s.sname , max(o.amt) as Max_Amt from orders as o join salespeople as s on o.snum=s.snum where s.sname = 'Serres' OR s.sname = 'Rifkin' group by s.snum , s.sname;
+
+34. 
+select snum , sname , comm , city from salespeople;
+
+35. 
+select * from customers where cname between 'A' and 'Gzzz' ;
