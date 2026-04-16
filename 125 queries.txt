@@ -102,3 +102,18 @@ select snum , sname , comm , city from salespeople;
 
 35. 
 select * from customers where cname between 'A' and 'Gzzz' ;
+
+36.
+select c1.cname , c2.cname from customers as c1  join customers as c2 on c1.cnum < c2.cnum;
+
+37.
+select * from orders where amt >( select avg(amt) from orders where odate = '1996-10-04');
+
+38.
+select cnum , cname , city , rating from customers as c1 where rating = ( select max(rating) from customers as c2 where c2.city = c1.city )
+
+39.
+select odate , sum(amt) as Total_Sum from orders group by odate order by sum(amt) desc;
+
+40. 
+select rating , cname from customers where city = 'San Jose';
