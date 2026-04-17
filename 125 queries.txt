@@ -117,3 +117,18 @@ select odate , sum(amt) as Total_Sum from orders group by odate order by sum(amt
 
 40. 
 select rating , cname from customers where city = 'San Jose';
+
+41. 
+select * from orders where amt < ANY  ( select o.amt from orders as o join customers as c where c.city = 'San Jose') order by amt desc;
+
+42.
+select * from orders as o where o.amt > ( select avg(o2.amt) from orders as o2 join customers as c on o2.cnum = c.cnum  );
+
+43. 
+select city , max(rating) from customers group by city;
+
+44. 
+select s.sname, s.snum , o.onum , o.amt , ( o.amt * s.comm )  as COMM_AMT from salespeople as s join customers as c on s.snum = c.snum join orders as o on c.cnum = o.cnum where c.rating > 100 ;
+
+45. 
+select * from customers where rating > ( select avg(rating) from customers where city = 'San Jose');
