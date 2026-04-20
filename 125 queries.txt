@@ -132,3 +132,18 @@ select s.sname, s.snum , o.onum , o.amt , ( o.amt * s.comm )  as COMM_AMT from s
 
 45. 
 select * from customers where rating > ( select avg(rating) from customers where city = 'San Jose');
+
+46.
+select * from salespeople as s1 join salespeople as s2 order by s1.sname desc;
+
+47.
+select * from salespeople where city='Barcelona' OR city='London';
+
+48.
+select s.snum , s.sname from salespeople as s join customers as c on s.snum = c.snum group by s.snum , s.sname having count(c.cnum) = 1;
+
+49.
+select c1.cnum , c2.cnum , c1.snum from customers as c1 join customers as c2 on c1.snum = c2.snum and c1.cnum < c2.cnum;
+
+50.
+select * from orders where amt >= 1000;
