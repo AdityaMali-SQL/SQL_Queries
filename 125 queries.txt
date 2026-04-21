@@ -147,3 +147,25 @@ select c1.cnum , c2.cnum , c1.snum from customers as c1 join customers as c2 on 
 
 50.
 select * from orders where amt >= 1000;
+
+51.
+select o.onum , c.cname from orders as o join customers as c on o.cnum=c.cnum ;
+
+52.
+
+select distinct s.snum , s.sname from salespeople as s join customers as c on s.snum!=c.snum where s.city=c.city;
+
+select distinct s.snum , s.sname from salespeople as s where exists ( select 1 from customers as c where s.snum!=c.snum and s.city=c.city);
+
+53.
+select * from customers where rating >= ANY ( select rating from salespeople as s join customers as c on s.snum = c.snum where s.sname = 'Serres') ;
+
+54.
+
+select * from orders where odate='1996-10-03' or odate='1996-10-04';
+
+select * from orders where odate between '1996-10-03' and '1996-10-04';
+
+55.
+
+select c.cname , o1.onum , o2.onum from orders as o1 join orders as o2 on o1.cnum = o2.cnum and o1.onum<o2.onum join customers as c on o1.cnum = o2.cnum;
